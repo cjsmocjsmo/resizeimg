@@ -55,46 +55,49 @@ pub fn resize_image(jpgpath: String) -> String {
     // let height = jpg_meta.1;
     let aspect_ratio = jpg_meta.2;
     let orient = jpg_meta.3;
-    if orient == "landscape" {
-        println!("landscape");
-        if width > 1200 {
-            let newwidth = 1200;
-            let newheight = newwidth * aspect_ratio.clone();
-            println!("newwidth: {}\nnewheight: {}", newwidth, newheight);
-            let img = image::open(jpgpath.clone()).expect(&jpgpath);
-            let resized = img.resize(newwidth, newheight, image::imageops::FilterType::Lanczos3);
-            let fn_split = jpgpath.split("/").collect::<Vec<&str>>();
-            let filename_last = fn_split.last().unwrap();
-            let new_fn = "/media/pipi/USB01/Master_Master_Resize/".to_string() + &filename_last;
-            // resized.save(new_fn.clone()).unwrap();
-            println!("new_fn: {}", new_fn);
-            return new_fn.clone();
-        }
-    } else if orient == "portrait" {
-        if width > 900 {
-            let newwidth = 900;
-            let newheight = newwidth / aspect_ratio.clone();
-            println!("newwidth: {}\nnewheight: {}", newwidth, newheight);
-            let img = image::open(jpgpath.clone()).expect(&jpgpath);
-            let resized = img.resize(newwidth, newheight, image::imageops::FilterType::Lanczos3);
-            let fn_split = jpgpath.split("/").collect::<Vec<&str>>();
-            let filename_last = fn_split.last().unwrap();
-            let new_fn = "/media/pipi/USB01/Master_Master_Resize/".to_string() + &filename_last;
-            // resized.save(new_fn.clone()).unwrap();
-            println!("new_fn: {}", new_fn);
-            return new_fn.clone();
-        }
-    } else if orient == "square" {
-        let img = image::open(jpgpath.clone()).expect(&jpgpath);
-        let fn_split = jpgpath.split("/").collect::<Vec<&str>>();
-        let filename_last = fn_split.last().unwrap();
-        let new_fn = "/media/pipi/USB01/Master_Master_Resize/".to_string() + &filename_last;
-        // img.save(new_fn.clone()).unwrap();
-        println!("new_fn: {}", new_fn);
-        return new_fn.clone();
-    } else {
-        return "No Match".to_string();
-    }
+    println!("width: {}", width);
+    println!("aspect_ratio: {}", aspect_ratio);
+    println!("orient: {}", orient);
+    // if orient == "landscape" {
+    //     println!("landscape");
+    //     if width > 1200 {
+    //         let newwidth = 1200;
+    //         let newheight = newwidth * aspect_ratio.clone();
+    //         println!("newwidth: {}\nnewheight: {}", newwidth, newheight);
+    //         let img = image::open(jpgpath.clone()).expect(&jpgpath);
+    //         let resized = img.resize(newwidth, newheight, image::imageops::FilterType::Lanczos3);
+    //         let fn_split = jpgpath.split("/").collect::<Vec<&str>>();
+    //         let filename_last = fn_split.last().unwrap();
+    //         let new_fn = "/media/pipi/USB01/Master_Master_Resize/".to_string() + &filename_last;
+    //         // resized.save(new_fn.clone()).unwrap();
+    //         println!("new_fn: {}", new_fn);
+    //         return new_fn.clone();
+    //     }
+    // } else if orient == "portrait" {
+    //     if width > 900 {
+    //         let newwidth = 900;
+    //         let newheight = newwidth / aspect_ratio.clone();
+    //         println!("newwidth: {}\nnewheight: {}", newwidth, newheight);
+    //         let img = image::open(jpgpath.clone()).expect(&jpgpath);
+    //         let resized = img.resize(newwidth, newheight, image::imageops::FilterType::Lanczos3);
+    //         let fn_split = jpgpath.split("/").collect::<Vec<&str>>();
+    //         let filename_last = fn_split.last().unwrap();
+    //         let new_fn = "/media/pipi/USB01/Master_Master_Resize/".to_string() + &filename_last;
+    //         // resized.save(new_fn.clone()).unwrap();
+    //         println!("new_fn: {}", new_fn);
+    //         return new_fn.clone();
+    //     }
+    // } else if orient == "square" {
+    //     let img = image::open(jpgpath.clone()).expect(&jpgpath);
+    //     let fn_split = jpgpath.split("/").collect::<Vec<&str>>();
+    //     let filename_last = fn_split.last().unwrap();
+    //     let new_fn = "/media/pipi/USB01/Master_Master_Resize/".to_string() + &filename_last;
+    //     // img.save(new_fn.clone()).unwrap();
+    //     println!("new_fn: {}", new_fn);
+    //     return new_fn.clone();
+    // } else {
+    //     return "No Match".to_string();
+    // }
 
     jpgpath.clone()
 }
