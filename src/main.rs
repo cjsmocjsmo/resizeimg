@@ -21,7 +21,7 @@ fn main() {
 
     for t in rx.iter() {
         let info = t;
-        println!("aspect-ratio: {:?}", info.clone());
+        println!("Info: {:?}", info.clone());
     }
 }
 
@@ -31,6 +31,7 @@ fn image_meta(apath: String) -> (u32, u32, u32, &'static str) {
     let oldwidth = width.clone() as f64;
     let oldheight = height.clone() as f64;
     let ar = oldwidth / oldheight;
+    println!("ar: {}", ar);
     let aspect_ratio = ar.clone() as u32;
     let mut orient = "";
     if oldwidth > oldheight {
