@@ -25,14 +25,12 @@ fn main() {
     }
 }
 
-fn image_meta(apath: String) -> (u32, u32, u32, &'static str) {
+fn image_meta(apath: String) -> (f64, f64, f64, &'static str) {
     let img = image::open(apath.clone()).expect(&apath);
     let (width, height) = img.dimensions();
     let oldwidth = width.clone() as f64;
     let oldheight = height.clone() as f64;
-    let ar = oldwidth / oldheight;
-    println!("ar: {}", ar);
-    let aspect_ratio = ar.clone() as u32;
+    let aspect_ratio = oldwidth / oldheight;
     let mut orient = "";
     if oldwidth > oldheight {
         println!("landscape");
@@ -45,7 +43,7 @@ fn image_meta(apath: String) -> (u32, u32, u32, &'static str) {
         orient = "square";
     };
 
-    let res = (width, height, aspect_ratio, orient);
+    let res = (oldwidth, oldheight, aspect_ratio, orient);
 
     res
 }
@@ -53,7 +51,6 @@ fn image_meta(apath: String) -> (u32, u32, u32, &'static str) {
 pub fn resize_image(jpgpath: String) -> String {
     let jpg_meta = image_meta(jpgpath.clone());
     let width = jpg_meta.0;
-    // let height = jpg_meta.1;
     let aspect_ratio = jpg_meta.2;
     let orient = jpg_meta.3;
     println!("width: {}", width);
