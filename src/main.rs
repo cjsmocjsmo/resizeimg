@@ -57,7 +57,7 @@ pub fn resize_image(jpgpath: String) -> String {
         println!("landscape");
         if width > 1200 as f64{
             let newwidth = 1200 as f64;
-            let newheight = newwidth * aspect_ratio.clone();
+            let newheight = newwidth / aspect_ratio.clone();
             println!("newwidth: {}\nnewheight: {}", newwidth, newheight);
             let img = image::open(jpgpath.clone()).expect(&jpgpath);
             let new_width_u32 = newwidth as u32;
