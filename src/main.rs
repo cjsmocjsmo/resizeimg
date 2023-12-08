@@ -58,7 +58,6 @@ pub fn resize_image(jpgpath: String) -> String {
         if width > 1200 as f64{
             let newwidth = 1200 as f64;
             let newheight = newwidth / aspect_ratio.clone();
-            println!("newwidth: {}\nnewheight: {}", newwidth, newheight);
             let img = image::open(jpgpath.clone()).expect(&jpgpath);
             let new_width_u32 = newwidth as u32;
             let new_height_u32 = newheight as u32;
@@ -67,15 +66,13 @@ pub fn resize_image(jpgpath: String) -> String {
             let fn_split = jpgpath.split("/").collect::<Vec<&str>>();
             let filename_last = fn_split.last().unwrap();
             let new_fn = "/media/pipi/USB01/Master_Master_Resize/".to_string() + &filename_last;
-            // resized.save(new_fn.clone()).unwrap();
-            println!("new_fn: {}", new_fn);
+            resized.save(new_fn.clone()).unwrap();
             return new_fn.clone();
         }
     } else if orient == "portrait" {
         if width > 900 as f64 {
             let newwidth = 900 as f64;
             let newheight = newwidth / aspect_ratio.clone();
-            println!("newwidth: {}\nnewheight: {}", newwidth, newheight);
             let img = image::open(jpgpath.clone()).expect(&jpgpath);
             let new_width_u32 = newwidth as u32;
             let new_height_u32 = newheight as u32;
@@ -84,7 +81,7 @@ pub fn resize_image(jpgpath: String) -> String {
             let fn_split = jpgpath.split("/").collect::<Vec<&str>>();
             let filename_last = fn_split.last().unwrap();
             let new_fn = "/media/pipi/USB01/Master_Master_Resize/".to_string() + &filename_last;
-            // resized.save(new_fn.clone()).unwrap();
+            resized.save(new_fn.clone()).unwrap();
             println!("new_fn: {}", new_fn);
             return new_fn.clone();
         }
@@ -93,7 +90,7 @@ pub fn resize_image(jpgpath: String) -> String {
         let fn_split = jpgpath.split("/").collect::<Vec<&str>>();
         let filename_last = fn_split.last().unwrap();
         let new_fn = "/media/pipi/USB01/Master_Master_Resize/".to_string() + &filename_last;
-        // img.save(new_fn.clone()).unwrap();
+        img.save(new_fn.clone()).unwrap();
         println!("new_fn: {}", new_fn);
         return new_fn.clone();
     } else {
