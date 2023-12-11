@@ -55,8 +55,8 @@ pub fn resize_image(jpgpath: String) -> String {
     // println!("orient: {}", orient);
     if orient == "landscape" {
         println!("landscape");
-        if width > 1200 as f64{
-            let newwidth = 1200 as f64;
+        if width > 900 as f64{
+            let newwidth = 900 as f64;
             let newheight = newwidth / aspect_ratio.clone();
             let img = image::open(jpgpath.clone()).expect(&jpgpath);
             let new_width_u32 = newwidth as u32;
@@ -70,8 +70,8 @@ pub fn resize_image(jpgpath: String) -> String {
             return new_fn.clone();
         }
     } else if orient == "portrait" {
-        if width > 900 as f64 {
-            let newwidth = 900 as f64;
+        if width > 600 as f64 {
+            let newwidth = 600 as f64;
             let newheight = newwidth / aspect_ratio.clone();
             let img = image::open(jpgpath.clone()).expect(&jpgpath);
             let new_width_u32 = newwidth as u32;
