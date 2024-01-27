@@ -4,7 +4,7 @@ use threadpool::ThreadPool;
 pub mod walk_dirs;
 
 fn main() {
-    let pic_path = "/home/pi/Pictures/Master_Master_Final/".to_string();
+    let pic_path = "/home/pi/taz/hpics/".to_string();
     let imglist = walk_dirs::walk_dir(pic_path);
 
     let pool = ThreadPool::new(num_cpus::get());
@@ -65,7 +65,7 @@ pub fn resize_image(jpgpath: String) -> String {
             let resized = img.resize(new_width_u32, new_height_u32, image::imageops::FilterType::Lanczos3);
             let fn_split = jpgpath.split("/").collect::<Vec<&str>>();
             let filename_last = fn_split.last().unwrap();
-            let new_fn = "/media/pi/USBMOVIES/Master_Master_Resize2/".to_string() + &filename_last;
+            let new_fn = "/media/pi/taz/Master_HPics/".to_string() + &filename_last;
             resized.save(new_fn.clone()).unwrap();
             return new_fn.clone();
         }
@@ -80,7 +80,7 @@ pub fn resize_image(jpgpath: String) -> String {
             let resized = img.resize(new_width_u32, new_height_u32, image::imageops::FilterType::Lanczos3);
             let fn_split = jpgpath.split("/").collect::<Vec<&str>>();
             let filename_last = fn_split.last().unwrap();
-            let new_fn = "/media/pi/USBMOVIES/Master_Master_Resize2/".to_string() + &filename_last;
+            let new_fn = "/media/pi/taz/Master_HPics/".to_string() + &filename_last;
             resized.save(new_fn.clone()).unwrap();
             println!("new_fn: {}", new_fn);
             return new_fn.clone();
@@ -89,7 +89,7 @@ pub fn resize_image(jpgpath: String) -> String {
         let img = image::open(jpgpath.clone()).expect(&jpgpath);
         let fn_split = jpgpath.split("/").collect::<Vec<&str>>();
         let filename_last = fn_split.last().unwrap();
-        let new_fn = "/media/pi/USBMOVIES/Master_Master_Resize2/".to_string() + &filename_last;
+        let new_fn = "/media/pi/taz/Master_HPics/".to_string() + &filename_last;
         img.save(new_fn.clone()).unwrap();
         println!("new_fn: {}", new_fn);
         return new_fn.clone();
