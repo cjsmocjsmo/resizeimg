@@ -4,7 +4,7 @@ use threadpool::ThreadPool;
 pub mod walk_dirs;
 
 fn main() {
-    let pic_path = "/home/pi/taz/hpics/".to_string();
+    let pic_path = "/media/pi/taz/hpics/".to_string();
     let imglist = walk_dirs::walk_dir(pic_path);
 
     let pool = ThreadPool::new(num_cpus::get());
