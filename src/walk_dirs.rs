@@ -11,7 +11,7 @@ pub fn walk_dir(apath: String) -> Vec<String> {
             let fname = e.path().to_string_lossy().to_string();
             let ext_split = fname.split(".").collect::<Vec<&str>>();
             let ext = ext_split.last().unwrap();
-            if ext == &"jpg" {
+            if ext == &"jpg" || ext == &"JPG" || ext == &"jpeg" || ext == &"JPEG" {
                 image_vec.push(fname.clone());
             };
         };
