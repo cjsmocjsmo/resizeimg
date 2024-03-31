@@ -50,9 +50,6 @@ pub fn resize_image(jpgpath: String) -> String {
     let width = jpg_meta.0;
     let aspect_ratio = jpg_meta.2;
     let orient = jpg_meta.3;
-    // println!("width: {}", width);
-    // println!("aspect_ratio: {}", aspect_ratio);
-    // println!("orient: {}", orient);
     if orient == "landscape" {
         println!("landscape");
         if width > 1100 as f64{
